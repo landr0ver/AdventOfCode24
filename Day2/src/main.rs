@@ -37,10 +37,13 @@ fn main() {
         println!("{:?} \n", row);
         if row[0] > row[1] { ascending = false};
         if row[0] < row[1] { ascending = true};
+        let mut test_checker: i32 = 0;
         if ascending {
             for n in 0..row.len()-1 {
                 if row[n] < row[n+1] && difference_in_range(row[n], row[n+1]) {
                     row_counter += 1;
+                } else {
+                    test_checker += 1;
                 };
             }
         }
@@ -48,10 +51,15 @@ fn main() {
             for n in 0..row.len()-1 {
                 if row[n] > row[n+1] && difference_in_range(row[n], row[n+1]) {
                     row_counter += 1;
+                } else {
+                    test_checker += 1;
                 }
             }
         }
         if row_counter == (row.len()-1).try_into().unwrap() {
+            safe_counter += 1;
+        }
+        if test_checker == 1 {
             safe_counter += 1;
         }
     }
